@@ -1,4 +1,3 @@
-import ProductCard from "@/components/product-ui/product-card";
 import {useCartStore} from "@/store/useCartStore";
 import {useRouter} from "next/router";
 import { toast } from "sonner";
