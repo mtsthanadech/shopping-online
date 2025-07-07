@@ -16,9 +16,9 @@ const ProductCard = (props: ProductCardProps) => {
 				className="rounded-t-xl object-cover w-full h-[200px]"
 			/>
 			<CardContent className="space-y-1 text-left py-4 p">
-				<div className="flex items-center justify-between">
-					<h3 className="text-base font-bold leading-snug line-clamp-2">{name}</h3>
-					<div className="text-base font-bold leading-snug line-clamp-2 cursor-pointer"
+				<div className="flex items-start justify-between content-top">
+					<h3 className="text-base font-bold leading-snug">{name}</h3>
+					<div className="text-base font-bold leading-snug cursor-pointer"
 							onClick={(e) => { e.stopPropagation(); onAddToFav?.() }}>
 						{
 							favorite ?
@@ -31,7 +31,7 @@ const ProductCard = (props: ProductCardProps) => {
 					(count && count) &&
           <p className="text-sm text-gray-500">⭐{rating} ({count.toLocaleString()})</p>
 				}
-				<p className="font-bold text-md">฿{price.toLocaleString()}</p>
+				<p className="font-bold text-md">฿1{price.toLocaleString()}</p>
 
 				<Button className="mt-2 w-full font-bold cursor-pointer" onClick={(e) => { e.stopPropagation(); onAddToCart?.() }}>
 					Add to Cart

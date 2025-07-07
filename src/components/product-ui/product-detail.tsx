@@ -8,17 +8,17 @@ const ProductDetail = (props: ProductCardProps) => {
 	const { name, desc, image, price, rating, count, favorite, onAddToCart, onAddToFav} = props
 	console.log(props)
 	return (
-		<Card className="flex flex-row cursor-pointer transition-all p-0">
+		<Card className="flex flex-col lg:flex-row cursor-pointer transition-all p-0">
 			<Image
 				src={image}
 				alt={name}
 				width={1200}
 				height={900}
-				className="rounded-t-xl object-cover max-w-[600px]"
+				className="rounded-t-xl object-cover lg:max-w-[600px]"
 			/>
 			<CardContent className="flex flex-col justify-between py-6">
 				<div className="space-y-4">
-					<div className="flex items-center justify-between">
+					<div className="flex items-start justify-between">
 						<h3 className="text-base font-bold leading-snug line-clamp-2">{name}</h3>
 						<div className="text-base font-bold leading-snug line-clamp-2 cursor-pointer"
 								 onClick={(e) => { e.stopPropagation(); onAddToFav?.() }}>

@@ -4,13 +4,42 @@ import {useRouter} from "next/router";
 import { toast } from "sonner";
 import {useProductStore} from "@/store/useProductStore";
 import {ArrowLeft} from "lucide-react";
+import {Product} from "@/types/product";
 
 const Favorites = () => {
 	const router = useRouter();
 	const { addToCart } = useCartStore()
 	const { favProducts, addToFav } = useProductStore()
 
-	console.log(favProducts)
+	const handleAddToCart = (product: Product) => {
+		console.log("Add to cart:", product.name)
+		addToCart(product)
+		toast(`${product.name}`, {
+			description: "Added to cart",
+			action: {
+				label: "View cart",
+				onClick: () => router.push("/carts"),
+			},
+		})
+	}
+
+	const handleAddToFav = (product: Product) => {
+		console.log(`${product.favorite ? "Removed from" : "Add to"} favorite:`, product.name)
+		addToFav(product.id)
+		toast(`${product.name}`, {
+			description: `${product.favorite ? "Removed from" : "Add to"} favorite`,
+			action: {
+				label: "Undo",
+				onClick: () => addToFav(product.id),
+			},
+		})
+	}
+
+	const handleOnClick = (product: Product) => {
+		console.log("Go to product:", product.name)
+		router.push(`/product/${product.id}`)
+	}
+
 	return (
 		<div className="max-w-6xl mx-auto p-6">
 			<h1 className="flex flex-row item-center text-2xl font-bold mb-4 gap-4">
@@ -31,29 +60,9 @@ const Favorites = () => {
 								image={product.image}
 								price={product.price}
 								favorite={product.favorite}
-								onAddToCart={() => {
-									console.log("Add to cart:", product.name)
-									addToCart(product)
-									toast(`${product.name}`, {
-										description: "Added to cart",
-										action: {
-											label: "View cart",
-											onClick: () => router.push("/carts"),
-										},
-									})
-								}}
-								onAddToFav={() => {
-									console.log(`${product.favorite ? "Removed from" : "Add to"} favorite:`, product.name)
-									addToFav(product.id)
-									toast(`${product.name}`, {
-										description: `${product.favorite ? "Removed from" : "Add to"} favorite`,
-										action: {
-											label: "Undo",
-											onClick: () => addToFav(product.id),
-										},
-									})
-								}}
-								onClick={() => console.log("Go to product:", product.name)}
+								onClick={() => handleOnClick(product)}
+								onAddToCart={() => handleAddToCart(product)}
+								onAddToFav={() => handleAddToFav(product)}
 							/>
 						))}
 					</div>

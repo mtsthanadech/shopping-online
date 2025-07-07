@@ -22,7 +22,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 				</div>
 			</div>
 			{children}
-			<Toaster position="top-right" richColors visibleToasts={1} />
+			<Toaster position="top-center" richColors visibleToasts={1} />
 		</div>
 	)
 }
