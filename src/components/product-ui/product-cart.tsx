@@ -9,8 +9,8 @@ import {CartItem} from "@/types/cart";
 const ProductCart = ({item}: {item: CartItem}) => {
 	const { removeFromCart, addToCart, minusFromCart } = useCartStore()
 	return (
-		<CardContent key={item.id} className="flex h-[150px] gap-4 border-b pb-4 flex-col md:flex-row items-center">
-			<div className="flex max-w-[150px] h-[150px]">
+		<CardContent key={item.id} className="flex lg:h-[150px] gap-4 border-b pb-4 flex-col md:flex-row items-center">
+			<div className="flex max-w-[150px] lg:h-[150px]">
 				<Image
 					src={item.image}
 					alt={item.name}

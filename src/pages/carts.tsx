@@ -11,7 +11,7 @@ export default function CartPage() {
 	const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
 	return (
-		<div className="max-w-6xl mx-auto p-6">
+		<div className="max-w-6xl mx-auto">
 			<h1 className="flex flex-row item-center text-2xl font-bold mb-4 gap-4">
 				<div className="flex flex-wrap content-center cursor-pointer" onClick={() => router.push("/")}>
 					<ArrowLeft />
