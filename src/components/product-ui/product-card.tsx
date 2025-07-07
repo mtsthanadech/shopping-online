@@ -31,7 +31,7 @@ const ProductCard = (props: ProductCardProps) => {
 					(count && count) &&
           <p className="text-sm text-gray-500">⭐{rating} ({count.toLocaleString()})</p>
 				}
-				<p className="font-bold text-md">฿1{price.toLocaleString()}</p>
+				<p className="font-bold text-md">฿{price.toLocaleString()}</p>
 
 				<Button className="mt-2 w-full font-bold cursor-pointer" onClick={(e) => { e.stopPropagation(); onAddToCart?.() }}>
 					Add to Cart
